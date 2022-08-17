@@ -19,16 +19,14 @@ const rebuildGrid = function (numOfRows, numOfCols) {
 
   //create numOfRows x numOfCols cells with calculated cellWidth & cellHeight
   //and populate it into the gridDiv element
-  for (let i = 0; i < numOfRows; i++) {
-    for (let j = 0; j < numOfCols; j++) {
-      let cellDiv = document.createElement('div');
-      cellDiv.className = 'cell';
-      cellDiv.style.width = cellWidth + 'px';
-      console.log('cell length:', cellDiv.style.width);
-      cellDiv.style.height = cellHeight + 'px';
-      cellDiv.classList.add('default-color');
-      gridDiv.appendChild(cellDiv);
-    }
+  for (let i = 0; i < (numOfRows*numOfCols); i++) {
+    let cellDiv = document.createElement('div');
+    cellDiv.className = 'cell';
+    cellDiv.style.width = cellWidth + 'px';
+    console.log('cell length:', cellDiv.style.width);
+    cellDiv.style.height = cellHeight + 'px';
+    cellDiv.classList.add('default-color');
+    gridDiv.appendChild(cellDiv);
   }
 
   //listen for mouseover(hover) & change color of cell by adding appropriate class
