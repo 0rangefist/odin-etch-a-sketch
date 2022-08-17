@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <script src="./app.js" defer></script> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
     <title>Etch a Sketch</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div class="grid"></div>
+      <div class="sketch-pad">
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+            class="slider"
+          />
+        </div>
+        <div class="slider-output">Grid Size:</div>
+        <div class="flex-grid"></div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
