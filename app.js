@@ -1,10 +1,33 @@
-const getHoverColor = function () {
-  return 'hover-color-black';
-};
+// const getHoverColor = function (element) {
+//   //if eraser button is selected
+//   eraserButton.addEventListener(type, listener)
+//   if(){
+//     element.classList.remove('hover-color-black');
+//     element.classList.remove('hover-color-multi');
+//     return '';
+//   }
 
+//   //if multi-colour button is selected
+//   else if(){
+//     element.classList.remove('hover-color-black');
+//     return 'hover-color-multi';
+//   }
+
+//   //else if black button is selected
+//   else if(){
+//     element.classList.remove('hover-color-multi');
+//     return 'hover-color-black';
+//   }
+
+// };
+
+const getRandomColor = function(){
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    return `rgb(${randomR}, ${randomG}, ${randomB})`;
+}
 const rebuildGrid = function (numOfRows, numOfCols) {
-  //get grid div (new cells will populate in here)
-  let gridDiv = document.querySelector('.flex-grid');
   //clear the content of the grid div on each rebuild
   gridDiv.replaceChildren();
 
@@ -17,28 +40,43 @@ const rebuildGrid = function (numOfRows, numOfCols) {
   const cellWidth = gridTotalWidth / numOfRows;
   const cellHeight = gridTotalHeight / numOfCols;
 
+  //create an html fragment where the cells will be computed & added
+  const htmlFragment = document.createDocumentFragment();
+
   //create numOfRows x numOfCols cells with calculated cellWidth & cellHeight
   //and populate it into the gridDiv element
-  for (let i = 0; i < (numOfRows*numOfCols); i++) {
-    let cellDiv = document.createElement('div');
+
+  for (let i = 0; i < numOfRows * numOfCols; i++) {
+    const cellDiv = htmlFragment.appendChild(document.createElement('div'));
     cellDiv.className = 'cell';
     cellDiv.style.width = cellWidth + 'px';
-    console.log('cell length:', cellDiv.style.width);
     cellDiv.style.height = cellHeight + 'px';
-    cellDiv.classList.add('default-color');
-    gridDiv.appendChild(cellDiv);
   }
+
+  gridDiv.appendChild(htmlFragment);
 
   //listen for mouseover(hover) & change color of cell by adding appropriate class
   gridDiv.addEventListener('mouseover', (e) => {
-    console.log('mouseover:', e.target);
-
     let targetCellDiv = e.target;
-    console.log(targetCellDiv.classList.contains('cell'));
-    targetCellDiv.classList.remove('default-color');
-    targetCellDiv.classList.add(getHoverColor());
+    //targetCellDiv.classList.remove('default-color');
+    if (hoverColor == 'cell hover-color-multi'){
+        targetCellDiv.style.backgroundColor = getRandomColor();
+
+    }
+
+    if (hoverColor == 'cell') {
+        targetCellDiv.style.backgroundColor = '';
+    }
+    
+    targetCellDiv.className = hoverColor;
+    console.log('hover class:', hoverColor);
   });
+
+
 };
+
+//get grid div (new cells will populate in here)
+let gridDiv = document.querySelector('.flex-grid');
 
 //get user slider
 let slider = document.querySelector('.slider');
@@ -50,6 +88,36 @@ sliderOutput.textContent = slider.value;
 // set numOfRows & numOfCols to starting slider output
 let numOfRows = slider.value;
 let numOfCols = numOfRows;
+
+//get buttons
+const blackButton = document.querySelector('.black-button');
+const multiColorButton = document.querySelector('.multi-color-button');
+const eraserButton = document.querySelector('.eraser-button');
+const clearButton = document.querySelector('.clear-button');
+let hoverColor = 'cell hover-color-black';
+
+  blackButton.addEventListener('click', function () {
+    hoverColor = 'cell hover-color-black';
+    blackButton.classList.add('active');
+    multiColorButton.classList.remove('active');
+    eraserButton.classList.remove('active');
+  });
+  multiColorButton.addEventListener('click', function () {
+    hoverColor = 'cell hover-color-multi';
+    blackButton.classList.remove('active');
+    multiColorButton.classList.add('active');
+    eraserButton.classList.remove('active');
+  });
+  eraserButton.addEventListener('click', function () {
+    hoverColor = 'cell';
+    blackButton.classList.remove('active');
+    multiColorButton.classList.remove('active');
+    eraserButton.classList.add('active');
+  });
+  clearButton.addEventListener('click', function () {
+    gridDiv.replaceChildren();
+    rebuildGrid(numOfRows, numOfCols);
+  });
 
 //build the grid based on the slider output value
 rebuildGrid(numOfRows, numOfCols);
@@ -63,7 +131,5 @@ slider.addEventListener('input', function () {
 slider.addEventListener('change', function () {
   numOfRows = this.value;
   numOfCols = numOfRows;
-  console.log('num of rows:', numOfRows);
-  console.log('num of cols:', numOfCols);
   rebuildGrid(numOfRows, numOfCols);
 });
