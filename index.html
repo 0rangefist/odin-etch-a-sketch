@@ -10,19 +10,14 @@
   </head>
   <body>
     <main>
-        <button class="black-button active">Charcoal Mode</button>
-        <button class="multi-color-button">Multi-color Mode</button>
-        <button class="eraser-button">Eraser</button>
-        <button class="clear-button">Clear Pad</button>
+      <label for="colorpicker">Color Picker:</label>
+      <input type="color" id="color-picker" value="#0000ee" Class="active" />
+      <button class="multi-color-button">Multi-color Mode</button>
+      <button class="eraser-button">Eraser</button>
+      <button class="clear-button">Clear Pad</button>
       <div class="sketch-pad">
         <div class="slidecontainer">
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value="16"
-            class="slider"
-          />
+          <input type="range" min="1" max="100" value="16" class="slider" />
         </div>
         <div class="slider-output">Grid Size:</div>
         <div class="flex-grid"></div>
