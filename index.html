@@ -9,18 +9,23 @@
     <title>Etch a Sketch</title>
   </head>
   <body>
+    <header><h1>Etch-a-Sketch</h1></header>
     <main>
-      <label for="colorpicker">Color Picker:</label>
-      <input type="color" id="color-picker" value="#0000ee" Class="active" />
-      <button class="multi-color-button">Multi-color Mode</button>
-      <button class="eraser-button">Eraser</button>
-      <button class="clear-button">Clear Pad</button>
-      <div class="sketch-pad">
+      <div class="grid-size">
+        <div class="slider-output">Grid Size:</div>
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="16" class="slider" />
         </div>
-        <div class="slider-output">Grid Size:</div>
+      </div>
+      <div class="sketch-pad">
         <div class="flex-grid"></div>
+      </div>
+      <div class="controls">
+        <label for="colorpicker">Color Picker:</label>
+        <input type="color" id="color-picker" value="#DBFF57" class="active" />
+        <button class="multi-color-button">Multi-color Mode</button>
+        <button class="eraser-button">Eraser</button>
+        <button class="clear-button">Clear Pad</button>
       </div>
     </main>
   </body>

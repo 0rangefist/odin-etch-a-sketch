@@ -1,11 +1,52 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #9b7153;
+  color: rgb(255, 255, 255);
+  /* width: 100%; */
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  margin: 15px;
+}
+
 main {
-  width: 100vw;
+  /* width: 100vw; */
+  /* display: flex; */
+}
+
+.controls {
+  display: flex;
+  /* flex-direction: column; */
+  /* margin: 0 auto; */
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.grid-size {
+  display: flex;
+  max-width: 280px;
+  margin: 0 auto 5px auto;
+  gap: 5px;
+  justify-content: space-between;
+
+  /* justify-content: center;
+  padding: 5px;
+  gap:5px;
+  flex: 0 0 1; */
 }
 
 .sketch-pad {
-  width: 500px;
-  height: 500px;
-  background-color: #dadada;
+  width: 480px;
+  height: 480px;
+  background-color: white;
   margin: 0 auto;
 }
 
@@ -15,7 +56,7 @@ main {
 }
 .cell {
   flex: 0 0 auto;
-  background-color: orange;
+  background-color: white;
 }
 
 .hover-color-black {
@@ -33,8 +74,8 @@ main {
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
-  opacity: 0.7;
-  /* -webkit-transition: .2s; */
+  /* opacity: 0.7; */
+  -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
 
@@ -61,4 +102,29 @@ input[type='range']::-webkit-slider-thumb {
 
 .active {
   border: 2px solid orange;
+  background-color: orange;
+  color: white;
+}
+
+button:hover {
+  border: 2px solid orange;
+  /* background-color: orange;
+  color: white; */
+}
+
+input[type='color']:hover {
+  border: 2px solid orange;
+}
+
+button,
+input[type='color'] {
+  margin: 10px 5px;
+  border-radius: 5px;
+  background-color: white;
+  border-style: solid;
+}
+
+button {
+  padding: 6px;
+  font-size: 14px;
 }

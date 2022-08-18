@@ -64,7 +64,7 @@ let slider = document.querySelector('.slider');
 let sliderOutput = document.querySelector('.slider-output');
 
 //get the slider's starting output value
-sliderOutput.textContent = `${slider.value}x${slider.value}`;
+sliderOutput.textContent = `Grid Size: ${slider.value}x${slider.value}`;
 
 // set numOfRows & numOfCols to starting slider output
 let numOfRows = slider.value;
@@ -82,13 +82,11 @@ const clearButton = document.querySelector('.clear-button');
 let hoverColor = colorPicker.value;
 
 colorPicker.addEventListener('input', (e) => {
-  console.log('color picker change:', e.target.value);
   hoverColor = e.target.value;
   makeActive(e.target);
 });
 
 colorPicker.addEventListener('click', (e) => {
-  console.log('color picker click:', e.target.value);
   hoverColor = e.target.value;
   makeActive(e.target);
 });
@@ -109,7 +107,7 @@ rebuildGrid(numOfRows, numOfCols);
 
 //listen for slider input & update output display
 slider.addEventListener('input', (e) => {
-  sliderOutput.textContent = `${e.target.value}x${e.target.value}`;
+  sliderOutput.textContent = `Grid Size: ${e.target.value}x${e.target.value}`;
 });
 
 //listen for slider change & rebuild grid with the value
